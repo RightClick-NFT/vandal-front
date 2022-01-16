@@ -1,0 +1,50 @@
+body {
+  margin: 10px;
+  background-color: "#00007b";
+  font-family: "Pixelated MS Sans Serif";
+}
+
+.App {
+  font-family: "Pixelated MS Sans Serif";
+  display: grid;
+}
+
+.status-bar {
+  margin: 0px 1px;
+  gap: 1px;
+}
+
+.status-bar-field {
+  box-shadow: inset -1px -1px  #dfdfdf, 
+    inset 1px 1px #808080;
+  padding: 2px 3px;
+  margin: 0;
+}
+
+.wrapFieldSet {
+  max-width: 640px;
+  margin: auto;
+  letter-spacing: 1px;
+  line-height: 2;
+}
+
+td, th {
+  border: 1px solid #dfdfdf;
+  padding: 0.5rem;
+}
+
+.label-style {
+  align-items: center;
+  display: inline-flex;
+  gap: 5px;
+  margin: 10px;
+}
+
+.wrapper-header-window {
+  position: absolute;
+  right: 10px;
+}
+
+:root {
+  background-color: #3f6fa0;
+}
