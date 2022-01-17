@@ -25,7 +25,7 @@ export const TokenURI_ = (props: any) => {
     <div className="tokenDisplay">
       {/* // Some can return data: JSON object. In that case, img src fails */}
       {String(returnedSVG).slice(0, 15).includes("data:image") ? (
-        <img src={`${returnedSVG}`} />
+        <img alt="Your RightClick NFT" src={`${returnedSVG}`} />
       ) : (
         String(returnedSVG).slice(0, 250)
       )}

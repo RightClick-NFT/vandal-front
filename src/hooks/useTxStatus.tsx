@@ -22,18 +22,18 @@ export const TxStatus = (props: any) => {
 
   useEffect(() => {
     setVis("block");
-    if (tx.status == "Success") {
+    if (tx.status === "Success") {
       for (let i = 0; i < events.length; i++) {
         const name = events[i].name;
-        if (name == "Vandalized" || name == "CleanedUp") {
+        if (name === "Vandalized" || name === "CleanedUp") {
           logs.current = events[i].args.vToken.toString();
           result.current = true;
         }
       }
-    } else if (tx.status == "Exception") {
+    } else if (tx.status === "Exception") {
         logs.current = tx.errorMessage || "unknown error";
         result.current = true;
-    } else if (tx.status == "Fail") {
+    } else if (tx.status === "Fail") {
       logs.current = tx.errorMessage || "unknown error";
       result.current = true;
   }
