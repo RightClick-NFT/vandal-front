@@ -1,4 +1,3 @@
-import { useEthers } from "@usedapp/core";
 import { Burning } from "./Burning";
 import { Header } from "./Header";
 import { Minting } from "./Minting";
@@ -8,9 +7,7 @@ import { Ranking } from "./Ranking";
 import { useState } from "react";
 
 export const Main = () => {
-  const { account } = useEthers();
   const [ranking, setVis] = useState(false);
-  const isConnected = account !== undefined;
 
   const clickRanking = () => {
     setVis(true);

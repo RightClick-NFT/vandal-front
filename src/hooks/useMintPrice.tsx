@@ -24,7 +24,7 @@ export const MintPrice =  () => {
         }
     ) ?? [];
 
-    if (priceToMint.length == 1) {
+    if (priceToMint.length === 1) {
       price.current = utils.formatUnits(priceToMint[0])
     }
 
