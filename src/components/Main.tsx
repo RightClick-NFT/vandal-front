@@ -38,13 +38,13 @@ export const Main = () => {
               <legend>Introduction</legend>
 
               <p>
-                {" "}
                 Essentialy its <strong>
                   right-clicking using Solidity
                 </strong>{" "}
                 on-chain. If someones burns your right clicked NFT, you will
-                receive a fee. Burner gets a better one tho. GLHF.{" "}
+                receive a fee. Burner gets to zero your metadata and in exchange receives his own NFT. Each NFT can be 'copied' (mint) or 'cleaned' (burn) only once. {" "}
               </p>
+              {" "}
               <ul
                 className="tree-view"
                 style={{ letterSpacing: "1px", lineHeight: "2.2" }}
@@ -53,16 +53,16 @@ export const Main = () => {
                   Contract allows you to copy any ERC721 token metadata (usually
                   hyperlink and sometimes other type of object) on-chain. After
                   minting, returned NFT holds both copied metadata and its own
-                  data available from the same contract under the same tokenId.
+                  data (in form of image + data on-chain) available from the same contract under the same tokenId.
                   From the perspective of many available UIs (websites like
                   OpenSea) deciding to trust returned tokenURI values from
                   ERC721, your NFT will first display whatever other NFT
                   metadata you decided to copy. As long as target NFT exposes
-                  tokenURI() function. Minting using RightClick returns also a
+                  tokenURI() function (which is true for most). Minting using RightClick also returns a
                   second NFT assigned to the same tokenId as 'hijacked' NFT. You
-                  can burn other people NFTs to get rid of copied NFTs, the
+                  can burn other people RightClick NFTs to get rid of copied NFTs, the
                   whole amount is transferred to the owner of burned tokenId
-                  (10x current mint price), while burner NFT receives proof of
+                  (10x current mint price), while burner receives proof of
                   burn NFT token. Because NFTs can be 'hijacked' only once, the
                   burner receives the final version of RightClick generated NFT
                   (copyright infringement free).
@@ -78,7 +78,7 @@ export const Main = () => {
                         metadata, an SVG rendered image with values read from
                         current tokenId status. Therefore, the output of those
                         functions is not fixed throughout the lifetime of a
-                        contract and will change depending on different users
+                        contract and will change depending on users
                         interactions. One of the things happening when you
                         right-click (mint or, in other words, make a de facto
                         copy of some NFT metadata) new NFT is setting it in one
@@ -104,7 +104,7 @@ export const Main = () => {
                         provided when minted. Additionally, to supplying
                         contract with address and tokenId of NFT you wish to
                         copy, you are required to specify message (tag). Tag is
-                        your own signature, personal message, twitter handle or
+                        your own signature, personal message, ens domain, twitter handle or
                         whatever you want as long as it will fit into around 30
                         characters. Your tag can be edited if someone decides to
                         call burn on your tokenId.
@@ -119,16 +119,16 @@ export const Main = () => {
                         RightClick NFT. Burn and Mint dynamics is used as a sort
                         of Cops and Robbers game, of which the outcome defines
                         contract mint/burn pricing. Increasing or decreasing
-                        cost of those operations linearly and will eventually
+                        cost of those operations linearly. Eventually it will
                         make removing copies expensive (and profitable to
-                        make!). Burning allows anybody to destroy a copy of
-                        priceless NFT-art metadata at only 10x the fee of the
+                        create). Burning allows anybody to destroy a copy of
+                        priceless NFT-art metadata 'at only 10x' the fee of the
                         current mint price (starting from 0.01337 ETH). The
                         amount is transferred fully to the original minter
                         (owner or, in other words, a person who originally
                         copied NFT using RightClick). Meaning that there is a
                         ceiling (so-called floor...) of how much status 0 NFTs
-                        can be worth (Less than current burn price). When
+                        can be worth (Less than current burn price. I think. Depends what you put 'value' on.). When
                         calling tokenURI() and fTokenURI() of this contract for
                         given tokenId which status is equal to 1, the following
                         is returned: For burn caller, both tokenURI()and
@@ -335,12 +335,62 @@ export const Main = () => {
                     </ul>
                   </details>
                 </li>
+
+                <li>
+                  <details>
+                    <summary>
+                    Creator Notes II: Organic gamification and economical incentives
+                    </summary>
+                    <ul>
+                      <li>
+                        Making a copy of NFT can have many motivations, but it's
+                        safe to assume that as with most of the NFTs it's for
+                        speculative purposes. RightClick intended to have
+                        elements of game or be build in a way which would allow
+                        further extension to the game vertical, but because of
+                        the complexity the idea was backlogged (it also feels
+                        cash-grabesque). However, there is still an element of
+                        an economical game. Namely, each minted copy increases
+                        value of all copies and potential cost of (and profit
+                        of) burn for all the existing copies. Over time, if
+                        amount of copies increases dramatically, it would lead
+                        to, a) fairly expensive burns for 'CleanUp' (removal) of
+                        copies, b) very profitable payout for creators of
+                        copies. Additionally, as there is no way to mint a copy
+                        of the same NFT, it leads to rarity (1/1) of user
+                        created copy in step with ever-growing mint price for
+                        smaller and smaller pool of available NFTs worth
+                        copying. Dynamics for burners (Cleaners) is similar. As
+                        contract produces more and more copies, burn gets more
+                        and more expensive. You have at least two vectors to
+                        think of how valuable early burn is comparing to later
+                        ones. a) considerable discount price, b) bigger pool of
+                        all available NFTs to burn (e.g. burn most hyped first).
+                        Burning also can be performed only once. With ever
+                        rising burn price, burn token owners can expect
+                        decreasing amount of burn tokens being created over
+                        time. The ones already existing will most likely point
+                        to most-wanted NFTs of the current market. Those that
+                        will get minted in the future, will be so at higher
+                        prices than previous ones, further increasing the price
+                        of all the existing burn tokens. Because NFT space seems
+                        to constantly witness high-value sales, RightClick
+                        contract should always find a target for copying. Will
+                        this lead to a super efficient reproductions market,
+                        effectively offering us reliable price data by utilizing
+                        mechanics of 'greed'? Just a thought for maybe future
+                        development...
+                      </li>
+                    </ul>
+                  </details>
+                </li>
               </ul>
             </fieldset>
 
             <fieldset className="wrapFieldSet">
               <legend>Minting</legend>
               <p>Requirements for right-clicking on-chain</p>
+              <p><a href="https://odysee.com/@RightClick:0/mint-with-right-click-nft:8">Video: Minting and Inspecting your tokens</a></p>
               <ul>
                 <li>Specify contract address of NFT you want to right-click</li>
                 <li>Enter tokenId of specific NFT you want to right-click</li>
@@ -348,6 +398,7 @@ export const Main = () => {
                   Provide a tag. Signature, personal message, whatever. Max 30
                   characters.
                 </li>
+                <li>Wait for transaction to confirm, pop up should return your tokenId, use it for:</li>
                 <li>Copied Beeple NFT on tokenURI()</li>
                 <li>RightClick Copy Certificate on ftokenURI()</li>
               </ul>
@@ -361,6 +412,7 @@ export const Main = () => {
                 his on-chain copied NFT here. 100% of burn cost is forwarded to
                 ownerOf tokenId you are burning.
               </p>
+              <p><a href="https://odysee.com/@RightClick:0/burn-with-right-click:0">Video: Burning, receiving Burn-NFT and inspecting changes</a></p>
               <ul>
                 <li>Feel outraged?</li>
                 <li>
@@ -456,7 +508,9 @@ export const Main = () => {
                 <a href="https://github.com/RightClick-NFT">
                   <button>Github</button>
                 </a>
-                <button disabled>Community</button>
+                <a href="https://discord.gg/PUvDYEYh">
+                  <button>Discord</button>
+                </a>
                 <button onClick={clickRanking}>Ranking</button>
               </div>
             </fieldset>

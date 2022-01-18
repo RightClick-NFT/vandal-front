@@ -48,3 +48,7 @@ td, th {
 :root {
   background-color: #3f6fa0;
 }
+
+a { 
+  text-decoration: none; 
+}
